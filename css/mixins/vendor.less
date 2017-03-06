@@ -1,0 +1,134 @@
+
+//1.  Gradients
+//2.  Box & Text Shadows
+//6. Transitions, Transforms  & Animations
+//11. Box-sizing
+//12. Apappearance
+
+//****************************************/
+
+
+// 1.Gradients
+//****************************************/
+.linear-gradient(@direction,@start,@stop,@url: none){
+    .linear-gradient-mixin (@i) when not(@i=none){@url : ~'@{i},';};
+    .linear-gradient-mixin (@i) when (@i=none){@url : ~'';};
+    .linear-gradient-mixin (@url);
+    background: @url -webkit-linear-gradient(@direction,@start,@stop);
+    background: @url -moz-linear-gradient(@direction,@start,@stop);
+    background: @url -ms-linear-gradient(@direction,@start,@stop);
+    background: @url linear-gradient(@direction,@start,@stop);
+}
+.radial-gradient(@posX:center, @posY:center, @shape:ellipse, @size:cover, @start:rgba(127,127,127,0), @stop:rgba(127,127,127,0.9)){
+    background-image: -webkit-radial-gradient(@posX @posY, @shape @size, @start, @stop);
+    background-image: -moz-radial-gradient(@posX @posY, @shape @size, @start, @stop);
+    background-image: -ms-radial-gradient(@posX @posY, @shape @size, @start, @stop);
+    background-image: radial-gradient(@posX @posY, @shape @size, @start, @stop);
+}
+.three-colors-gradient(@start, @mid, @stop, @direction: top) {
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(@direction, @start, @mid, @stop);
+    background-image: -moz-linear-gradient(@direction, @start, @mid, @stop);
+    background-image: -ms-linear-gradient(@direction, @start, @mid, @stop);
+    background-image: linear-gradient(@direction, @start, @mid, @stop);
+}
+.four-colors-gradient (@start, @mid1, @mid2, @stop, @direction: top) {
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(@direction, @start, @mid1, @mid2, @stop);
+    background-image: -moz-linear-gradient(@direction, @start, @mid1, @mid2, @stop);
+    background-image: -ms-linear-gradient(@direction, @start, @mid1, @mid2, @stop);
+    background-image: linear-gradient(@direction, @start, @mid1, @mid2, @stop);
+}
+
+// 2. Box & Text Shadows
+//****************************************/
+.box-shadow (@arguments: 0 0 3px rgba(0,0,0,.4) ) {
+    box-shadow: @arguments;
+}
+.text-shadow(@shadow: 0 1px 1px rgba(0,0,0,.25) ) {
+    text-shadow: @shadow;
+}
+
+// 3. Box-sizing
+//****************************************/
+.box-sizing (@model:border-box) {
+    -webkit-box-sizing: @model;
+    -moz-box-sizing: @model;
+    box-sizing: @model;
+}
+
+//4. Appearance
+//****************************************/
+.appearance (@app: none) {
+    -webkit-appearance: @app;
+    -moz-appearance: @app;
+    appearance: @app;
+}
+
+
+
+// 6. Transitions, Transforms  & Animations
+//****************************************/
+.transition(@property: all, @duration: 0.2s, @function: ease, @delay: 0s) {
+    -webkit-transition: @property @duration @function @delay;
+    transition: @property @duration @function @delay;
+}
+
+.transition-property(@property: all) {
+    -webkit-transition-property: @property;
+    transition-property: @property;
+}
+
+.transition-duration(@duration: 0.2s) {
+    -webkit-transition-duration: @duration;
+    transition-duration: @duration;
+}
+
+//values: [ ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps(<integer>[, [ start | end ] ]?)
+//| cubic-bezier(<number>, <number>, <number>, <number>) ]
+//[, [ ease | linear | ease-in | ease-out | ease-in-out | step-start | step-end | steps(<number>[,
+//[ start | end ] ]?) | cubic-bezier(<number>, <number>, <number>, <number>) ] ]
+.transition-function (@func: ease) {
+    -webkit-transition-timing-function: @func;
+    transition-timing-function: @func;
+}
+
+.transition-delay (@delay: 0.5s) {
+    -webkit-transition-delay: @delay;
+    transition-delay: @delay;
+}
+
+.transform(@function) {
+    -webkit-transform: @function;
+    transform: @function;
+}
+
+.rotation(@deg: 5deg) {
+    -webkit-transform: rotate(@deg);
+    transform: rotate(@deg);
+}
+
+.scale(@ratio: 1.5) {
+    -webkit-transform: scale(@ratio);
+    transform: scale(@ratio);
+}
+
+.scale3d(@x, @y, @z) {
+    -webkit-transform: scale3d(@x, @y, @z);
+    transform: scale3d(@x, @y, @z);
+}
+
+.skew(@deg) {
+    -webkit-transform: skew(@deg);
+    transform: skew(@deg);
+}
+
+.translate(@x: 0, @y: 0) {
+    -webkit-transform: translate(@x, @y);
+    transform: translate(@x, @y);
+}
+
+.transform-3d() {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}

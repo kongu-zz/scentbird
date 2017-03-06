@@ -1,0 +1,117 @@
+/*.app {
+  background-color: black;
+
+
+  .legacy-flex();
+  .flex-display();
+  .flex-direction(row);
+
+  .flex-wrap(wrap);
+  .align-content(stretch);
+
+
+  margin: 0;
+  min-height: 100%;
+}
+
+.item-left {
+  width: 300px;
+  height: 300px;
+background-color: silver;
+  border: 1px solid rebeccapurple;
+
+}
+
+.item-right {
+  width: 500px;
+  height: 300px;
+background-color: greenyellow;
+  border: 1px solid greenyellow;
+
+}*/
+.wrapper {
+  margin: -10px -10px -10px 180px;
+}
+.wrapper > * {
+  padding: 10px;
+}
+.flex{
+  display: -webkit-box;/* Android4.3以前ブラウザ用 */
+  display: -webkit-flex;/* iOS8以前Safari用 */
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  margin: -10px -20px -10px -10px;
+  flex: 1 100%;
+}
+.header {
+  background: tomato;
+  height: 60px;
+  width: 100%;
+}
+.breadcrumb{
+  background: green;
+  height: 30px;
+  width: 100%;
+}
+.footer {
+  background: lightgreen;
+  min-width: 100%;
+}
+
+.main {
+  -webkit-box-flex: 1;/*--- Android4.3以前ブラウザ用 ---*/
+  -webkit-flex: 1;/*--- iOS8以前Safari用 ---*/
+  flex: 1;
+  text-align: left;
+  background: deepskyblue;
+  flex: 1;
+  margin: -150px 0px 0px 0px;
+}
+
+.aside-1 {
+  background: pink;
+  padding: 10px;
+  max-width:320px;
+  height:130px;
+}
+.aside-2 {
+  -webkit-box-flex: 1;/*--- Android4.3以前ブラウザ用 ---*/
+  -webkit-flex: 1;/*--- iOS8以前Safari用 ---*/
+  flex: 1;
+  background: gold;
+  padding: 10px;
+  max-width:320px;
+}
+
+@media only screen and (max-width: 979px) {
+  .wrapper {
+    margin: -10px -10px -10px -10px ;
+    width:100%;
+    height:100%;
+  }
+  .flex{
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex: 1;
+    flex: 1;
+    display:flex;
+  }
+  .header{
+    height:10%;
+  }
+  .breadcrumb{
+    height:10%;
+  }
+  .aside-1
+  {
+    height: 10%;
+    min-width: 100%;
+  }
+  .main {
+    margin: 0 0 0 0 ;
+    order: 1; }
+  .aside-2 {
+    order :2;
+    min-width: 100%;}
+}

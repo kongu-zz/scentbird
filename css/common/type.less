@@ -1,0 +1,49 @@
+h1, .h1, h2, .h2, h3, .h3 {
+    margin: 0.5em 0;
+    font-weight: normal;
+}
+
+h1, .h1 {
+    font-size: 36px;
+    margin: 0 0 0.5em 0;
+    color: #272e34;
+    font-weight: normal;
+}
+
+
+h2, .h2 {
+    font-size: 26px;
+    margin: 50px 0 15px 0;
+    color: #272e34;
+    font-weight: normal;
+
+    &:first-child {
+        margin: 0 0 15px 0;
+    }
+
+    /*
+    -webkit-animation: slideInLeft 600ms;
+    animation: slideInLeft 600ms;
+    */
+}
+
+
+.header-xl {
+    font-size: 36px;
+}
+
+.text-small {
+    font-size: 13px;
+}
+
+.box-sizing (@model:border-box) {
+    -webkit-box-sizing: @model;
+    -moz-box-sizing: @model;
+    box-sizing: @model;
+}
+
+.user-select (@model:none) {
+    -webkit-user-select: @model;
+    -moz-user-select: @model;
+    user-select: @model;
+}

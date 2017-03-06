@@ -1,0 +1,222 @@
+.rotation(@deg:5deg){
+    -webkit-transform: rotate(@deg);
+    transform: rotate(@deg);
+}
+
+.animation-count(@count: 1) {
+    -webkit-animation-iteration-count: @count;
+    animation-iteration-count: @count;
+}
+
+.animateBase (@animationName, @duration) {
+    .animation-name(@animationName);
+    .animation-duration(@duration);
+    .animation-fill-mode(both);
+}
+
+.animationReady (@animationName, @duration: 1s) {
+    .animateBase(@animationName, @duration);
+}
+
+.animationReady (@animationName) when (@animationName = swing) {
+    .animateBase(swing);
+    .transform-origin(top center);
+}
+
+.animationReady (@animationName) when (@animationName = hinge) {
+    .animateBase(hinge, 2s);
+}
+
+.animationReady (@animationName) when (@animationName = lightSpeedOut) {
+    .animateBase(lightSpeedOut);
+    .animation-function(ease-in);
+}
+
+.animationReady (@animationName) when (@animationName = lightSpeedIn) {
+    .animateBase(lightSpeedIn);
+    .animation-function(ease-in);
+}
+
+.animationReady (@animationName) when (@animationName = flyOut) {
+    .animateBase(flyOut, 0.8s);
+    .animation-function(cubic-bezier(0.6, 0.04, 0.98, 0.335));
+}
+
+
+
+.transform-origin(@s) {
+    -webkit-transform-origin: @s;
+    transform-origin: @s;
+}
+
+.backface(@b: hidden) {
+    -webkit-backface-visibility: @b;
+    backface-visibility: @b;
+}
+
+.animation(@name, @duration: 1s, @function: ease, @delay: 0) {
+    -webkit-animation: @name @duration @function @delay;
+    animation: @name @duration @function @delay;
+}
+
+.animation-name(@name) {
+    -webkit-animation-name: @name;
+    animation-name: @name;
+}
+
+.animation-duration(@duration: 0.2s) {
+    -webkit-animation-duration: @duration;
+    animation-duration: @duration;
+}
+
+.animation-function(@function: ease) {
+    -webkit-animation-timing-function: @function;
+    animation-timing-function: @function;
+}
+
+//<single-animation-iteration-count> = infinite | <number>
+.animation-count(@count: 1) {
+    -webkit-animation-iteration-count: @count;
+    animation-iteration-count: @count;
+}
+
+.animation-timing-function(@fnc: ease-in-out) {
+    -webkit-animation-timing-function: @fnc;
+    animation-timing-function: @fnc;
+}
+
+//<single-animation-direction> = normal | reverse | alternate | alternate-reverse
+.animation-direction(@direction: normal) {
+    -webkit-animation-direction :@direction;
+    animation-animation-direction: @direction;
+}
+
+//<single-animation-play-state> = running | paused
+.animation-play-state(@state: running) {
+    -webkit-animation-play-state: @state;
+    animation-animation-play-state: @state;
+}
+
+.animation-delay(@delay: 0.5s) {
+    -webkit-animation-delay: @delay;
+    animation-delay: @delay;
+}
+
+//<single-animation-fill-mode> = none | forwards | backwards | both
+.animation-fill-mode(@mode: forwards) {
+    -webkit-animation-fill-mode: @mode;
+    animation-fill-mode: @mode;
+}
+
+
+
+
+// 1.19 FadeInDown
+//****************************************/
+
+.keyFramesFadeInDown() {
+    0% {
+        opacity: 0;
+        .transform(translateY(-20px));
+    }
+
+    100% {
+        opacity: 1;
+        .transform(translateY(0));
+    }
+}
+
+@-webkit-keyframes fadeInDown {
+    .keyFramesFadeInDown();
+}
+
+@keyframes fadeInDown {
+    .keyFramesFadeInDown();
+}
+// 1.23 FadeInRight80
+//****************************************/
+
+.keyFramesFadeInRight80() {
+    0% {
+        opacity: 0;
+        .transform(translateX(20px));
+    }
+
+    100% {
+        opacity: 0.8;
+        .transform(translateX(0));
+    }
+}
+
+@-webkit-keyframes fadeInRight80 {
+    .keyFramesFadeInRight80();
+}
+
+@keyframes fadeInRight80 {
+    .keyFramesFadeInRight80();
+}
+
+
+
+// 1.54 SlideInLeft
+//****************************************/
+
+.keyFramesSlideInLeft() {
+    0% {
+        opacity: 0;
+        .transform(translateX(-2000px));
+    }
+
+    100% {
+        .transform(translateX(0));
+    }
+}
+
+@-webkit-keyframes slideInLeft {
+    .keyFramesSlideInLeft();
+}
+
+@keyframes slideInLeft {
+    .keyFramesSlideInLeft();
+}
+
+// 1.55 SlideInRight
+//****************************************/
+
+.keyFramesSlideInRight() {
+    0% {
+        opacity: 0;
+        .transform(translateX(2000px));
+    }
+
+    100% {
+        .transform(translateX(0));
+    }
+}
+
+@-webkit-keyframes slideInRight {
+    .keyFramesSlideInRight();
+}
+
+@keyframes slideInRight {
+    .keyFramesSlideInRight();
+}
+
+
+// 1.63 Device process icon animation (rotation)
+.keyFramesProcessIconRotation() {
+    0% {
+        .rotation(0deg);
+    }
+    100% {
+        .rotation(360deg);
+    }
+}
+
+@-webkit-keyframes processIconRotation {
+    .keyFramesProcessIconRotation();
+}
+
+@keyframes processIconRotation {
+    .keyFramesProcessIconRotation();
+}
