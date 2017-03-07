@@ -595,39 +595,13 @@ h2:first-child,
   font-weight: normal;
   font-style: normal;
 }
-/*.app {
-  background-color: black;
-
-
-  .legacy-flex();
-  .flex-display();
-  .flex-direction(row);
-
-  .flex-wrap(wrap);
-  .align-content(stretch);
-
-
-  margin: 0;
-  min-height: 100%;
-}
-
-.item-left {
-  width: 300px;
-  height: 300px;
-background-color: silver;
-  border: 1px solid rebeccapurple;
-
-}
-
-.item-right {
-  width: 500px;
-  height: 300px;
-background-color: greenyellow;
-  border: 1px solid greenyellow;
-
-}*/
 body {
   font-family: 'Proxima Nova', Georgia, sans-serif;
+  color: #000000;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
 }
 .header {
   height: 100px;
@@ -645,23 +619,42 @@ body {
 .content {
   float: right;
   width: 100%;
-  background-color: #CCF;
+  height: 1200px;
+  /*background-color: #CCF;*/
 }
 .aside {
   float: left;
   width: 400px;
   margin-left: -400px;
-  background-color: #63ffcf;
 }
 .order {
-  background-color: #FFA;
-  height: 600px;
+  background-color: #fff;
   border: solid 1px #e6e6e6;
-  padding: 0 25px 0 25px;
+  padding: 0 25px 42px 25px;
 }
-.picture {
-  width: 400px;
-  background-color: #657aff;
+.order .total-body {
+  border-top: solid 1px #e6e6e6;
+  border-bottom: solid 1px #e6e6e6;
+  padding: 20px 0 20px 0;
+}
+.order .total-final {
+  padding-top: 20px;
+}
+.order table {
+  width: 100%;
+}
+.order table td:nth-child(2) {
+  text-align: right;
+}
+.order .coupon-code {
+  font-size: 16px;
+  margin-top: 32px;
+}
+.order .coupon-code a {
+  color: #ff408e;
+}
+.picture .p {
+  padding-top: 50px;
 }
 .cleared {
   clear: both;
@@ -672,17 +665,11 @@ body {
 .content-header .title {
   color: #000000;
   font-size: 36px;
-  font-style: normal;
-  font-stretch: normal;
-  font-weight: 400;
   text-align: left;
 }
 .content-header .slogan {
   color: #ff408e;
   font-size: 16px;
-  font-style: normal;
-  font-stretch: normal;
-  font-weight: 400;
   text-align: left;
 }
 .logo {
@@ -696,18 +683,11 @@ body {
   display: block;
   height: 284px;
   width: 67px;
-  margin: 40px auto 0 auto;
-  /*margin-left: auto;
-  margin-right: auto;
-
-  margin-top: 40px;*/
+  margin: 39px auto 49px auto;
 }
-/*
-.free-perfume-product {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}*/
+.bird-on-bike {
+  width: 369px;
+  height: 240px;
+  background: url("icons/bird-on-bike.svg") no-repeat;
+  margin-bottom: 25px;
+}
