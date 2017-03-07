@@ -52,7 +52,7 @@
                         </tr>
                         <tr>
                             <td>Discount</td>
-                            <td>-$5</td>
+                            <td class="discount">-$5</td>
                         </tr>
                         <tr>
                             <td>Credit (Balance $100)</td>
@@ -94,7 +94,203 @@
                     Billed monthly. Renews automatically, cancel any time. Free shipping.
                 </div>
             </div>
-            Column 1 (fluid)
+            <div class="checkout">
+
+                <h2>Create account</h2>
+                <section>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="Email address"
+                                   name="email" value=""
+                                   tabindex="0" class="K2F3 scentbird-input"/>
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="password"
+                                   placeholder="Password"
+                                   name="password" value=""
+                                   tabindex="0" class="K2F3 scentbird-input"/>
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                </section>
+
+                <h2>Shipping address</h2>
+
+                <section>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="First name"
+                                   name="firstName" value=""
+                                   tabindex="0" class="K2F3 scentbird-input">
+
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="Last name"
+                                   name="lastName" value=""
+                                   tabindex="0" class="K2F3 scentbird-input">
+
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="column column-street">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="Street address"
+                                   name="street" value=""
+                                   tabindex="0" class="K2F3 scentbird-input"/>
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                    <div class="column column-apt">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="Apt/Suite (Optional)"
+                                   name="apt" value=""
+                                   tabindex="0" class="K2F3 scentbird-input"/>
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="Zip"
+                                   name="zip" value=""
+                                   tabindex="0" class="K2F3 scentbird-input">
+
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <select name="state" class="K2F3 scentbird-input">
+                                <option>Select state</option>
+                                <option>NEW YORK</option>
+                                <option></option>
+                            </select>
+
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <select name="city" class="K2F3 scentbird-input">
+                                <option>Select city</option>
+                                <option>NEW YORK</option>
+                                <option></option>
+                            </select>
+
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="column column-long">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="Country"
+                                   name="country" value=""
+                                   tabindex="0" class="K2F3 scentbird-input">
+
+                            <p class="validation-message">This field is required</p>
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="column">
+                        <label class="form-control _3FFR a4P6">
+                            <input type="text"
+                                   placeholder="Mobile number (Optional)"
+                                   name="phone" value=""
+                                   tabindex="0" class="K2F3 scentbird-input">
+
+                        </label>
+                    </div>
+                    <div class="column column-center">
+                        We may send you special discounts and offers
+                    </div>
+                </section>
+
+                <div class="billing-address-on">
+                    <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox" checked="checked">
+                    <label for="checkboxG5" class="css-label">Use this address as my billing address</label>
+                </div>
+
+                <h2>Secure credit card payment</h2>
+
+                <div class="cc-wrapper">
+                    <span class="b-icon icon-cc-sign"></span>
+                    <span class="cc-encryption">128-BIT ENCRYPTION.     YOU’RE SAFE</span>
+
+                    <section class="credit-card-payment">
+                        <div class="column cc-number">
+                            <label class="form-control _3FFR a4P6">
+                                <input type="text"
+                                       placeholder="Credit card number"
+                                       name="ccNumber" value=""
+                                       tabindex="0" class="K2F3 scentbird-input">
+
+                                <p class="validation-message">This field is required</p>
+                            </label>
+                        </div>
+                        <div class="column cc-security-code">
+                            <label class="form-control _3FFR a4P6">
+                                <input type="text"
+                                       placeholder="Credit card number"
+                                       name="ccNumber" value=""
+                                       tabindex="0" class="K2F3 scentbird-input">
+                                <div>?</div>
+                                <p class="validation-message">This field is required</p>
+                            </label>
+                            <div>!</div>
+                        </div>
+                        <div class="column cc-year">
+                            <label class="form-control _3FFR a4P6">
+                                <select name="ccMonth" class="K2F3 scentbird-input">
+                                    <option>Month</option>
+                                    <option>NEW YORK</option>
+                                    <option></option>
+                                </select>
+
+                                <p class="validation-message">This field is required</p>
+                            </label>
+                        </div>
+                        <div class="column cc-month">
+                            <label class="form-control _3FFR a4P6">
+                                <select name="ccYear" class="K2F3 scentbird-input">
+                                    <option>Year</option>
+                                    <option>NEW YORK</option>
+                                    <option></option>
+                                </select>
+
+                                <p class="validation-message">This field is required</p>
+                            </label>
+                        </div>
+                        <div class="column cc-other">
+                            Exp.
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+
         </div>
         <div class="cleared"></div>
     </div>
