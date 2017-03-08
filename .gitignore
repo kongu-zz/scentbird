@@ -207,3 +207,6 @@ FakesAssemblies/
 
 .awcache
 .idea
+dist
+design/**
+!design/*.html
