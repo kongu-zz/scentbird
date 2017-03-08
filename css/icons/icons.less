@@ -14,6 +14,7 @@
   background: url("cc-sign.svg");
   background-size: 29px 35px;
   margin-right: 10px;
+  margin-left: 15px;
 
   position: relative;
   display: inline-block;
@@ -24,9 +25,10 @@
   height: 21px;
   background: url("icon-cc-all.png");
   background-size: 145px 21px;
+  margin-left: 15px;
+  margin-bottom: 15px;
 
-  display: inline-block;
-  float: right;
+  display: block;
 }
 
 .logo {
@@ -40,9 +42,9 @@
 
 .free-perfume-product {
   display: block;
-  height: 284px;
-  width: 67px;
-  margin: 39px auto 49px auto;
+  height: 153px;
+  width: 38px;
+  margin: 54px auto 45px auto;
 }
 
 .bird-on-bike {
@@ -50,6 +52,28 @@
   height: 240px;
   background: url("bird-on-bike.svg") no-repeat;
   margin-bottom: 25px
+}
+
+@media (min-width: 768px) {
+  .free-perfume-product {
+    height: 284px;
+    width: 67px;
+    margin: 39px auto 49px auto;
+  }
+
+  .icon-cc-all {
+    width: 145px;
+    height: 21px;
+    background: url("icon-cc-all.png");
+    background-size: 145px 21px;
+
+    display: inline-block;
+    float: right;
+  }
+
+  .icon-cc-sign {
+    margin-left: 0;
+  }
 }
 
 
