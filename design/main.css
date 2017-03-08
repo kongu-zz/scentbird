@@ -867,22 +867,69 @@ section {
   flex-grow: 2;
   flex-shrink: 1;
   flex-basis: 45%;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 50px;
+}
+.cc-other span {
+  font-size: 18px;
+  color: #9b9b9b;
 }
 .cc-wrapper {
   border: 1px solid #e6e6e6;
   background: #fafafa;
-  padding: 30px;
+  padding: 27px 30px 30px 30px;
+  margin-top: 15px;
 }
 .cc-wrapper input,
 .cc-wrapper select {
   background-color: white;
 }
 .cc-encryption {
+  display: inline-block;
   color: #299501;
+  margin-bottom: 20px;
 }
 /*.cc-wrapper input {
   background-color: white;
 }*/
+.buttons {
+  margin-top: 30px;
+  float: right;
+}
+.btn {
+  display: inline-block;
+  padding: 13px 53px 17px 53px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1em;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: none;
+  border: 1px solid transparent;
+}
+.btn .ico_ajst {
+  margin: -5px 3px -2px -5px;
+}
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #ff458f;
+  border-color: #ff458f;
+}
 .b-icon {
   display: inline-block;
   background: 0 0 no-repeat;
@@ -897,7 +944,16 @@ section {
   background: url("icons/cc-sign.svg");
   background-size: 29px 35px;
   margin-right: 10px;
+  position: relative;
   display: inline-block;
+}
+.icon-cc-all {
+  width: 145px;
+  height: 21px;
+  background: url("icons/icon-cc-all.png");
+  background-size: 145px 21px;
+  display: inline-block;
+  float: right;
 }
 .logo {
   width: 137px;

@@ -1,13 +1,11 @@
-input
-{
+input {
   padding: 0;
   margin: 0;
   border: 0;
   border: none;
 }
 
-select
-{
+select {
   padding: 0;
   margin: 0;
   border: 0;
@@ -324,12 +322,22 @@ section {
   flex-grow: 2;
   flex-shrink: 1;
   flex-basis: 45%;
+
+  text-align: left;
+  vertical-align: middle;
+  line-height: 50px;
+
+  span {
+    font-size: 18px;
+    color: #9b9b9b;
+  }
 }
 
 .cc-wrapper {
   border: 1px solid #e6e6e6;
   background: #fafafa;
-  padding: 30px;
+  padding: 27px 30px 30px 30px;
+  margin-top: 15px;
 
   input, select {
     background-color: white;
@@ -337,9 +345,58 @@ section {
 }
 
 .cc-encryption {
+  display: inline-block;
   color: #299501;
+  margin-bottom: 20px;
 }
 
 /*.cc-wrapper input {
   background-color: white;
 }*/
+.buttons {
+  margin-top: 30px;
+  float: right;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 53px 17px 53px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1em;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+
+  cursor: pointer;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  background: none;
+  border: 1px solid transparent;
+
+  .ico_ajst {
+    margin: -5px 3px -2px -5px;
+
+  }
+
+
+  &-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+
+  &-primary {
+    color: #fff;
+    background-color: #ff458f;
+    border-color: #ff458f;
+  }
+}
