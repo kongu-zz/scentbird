@@ -741,7 +741,7 @@ section {
   background-color: #FF8FBC;
   border-color: #ff8fbc !important;
 }
-.form-control._3FFR {
+.form-control.error {
   /* border-color: #fd6464;
    -webkit-box-shadow: inset 0 0 0 1px #fd6464;
    box-shadow: inset 0 0 0 1px #fd6464;*/
