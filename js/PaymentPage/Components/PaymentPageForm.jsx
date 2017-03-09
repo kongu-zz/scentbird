@@ -29,6 +29,20 @@ const RenderInput = ({input, label, type, meta: {touched, error}}) => (
     </label>
 );
 
+const RenderSelect = ({input, label, meta: {touched, error}, children}) => (
+    <label class="form-control error bg" class={classNames("form-control", {"error": touched && error}, "bg")}>
+
+        <select {...input} class="scentbird-input">
+            {children}
+        </select>
+
+        {touched && ((error && <p class="validation-message">{error}</p>))}
+
+    </label>
+);
+
+
+
 @connect((s) => ({}))
 @reduxForm({
     form: "PaymentPageForm",
@@ -42,6 +56,10 @@ export class PaymentPageForm extends React.Component {
         // some submit action
     };
 
+    handleClickCheckbox = (e) => {
+        //this.setState({checked: e.target.checked});
+    };
+
     render() {
         return (
             <form onSubmit={this.props.handleSubmit(this.submit)}>
@@ -53,17 +71,7 @@ export class PaymentPageForm extends React.Component {
                             <Field name="email" type="email" component={RenderInput} label="Email address"/>
                         </div>
                         <div class="column">
-                            <Field name="password" type="password" component={RenderInput}
-                                   label="Password"/>
-                            {/*<label class="form-control error a4P6">*/}
-                            {/*<Field name="password" placeholder="Password"*/}
-                            {/*class="K2F3 scentbird-input" component="input" type="password"/>*/}
-                            {/*/!*<input type="password"*/}
-                            {/*placeholder="Password"*/}
-                            {/*name="password" value=""*/}
-                            {/*class="K2F3 scentbird-input"/>*!/*/}
-                            {/*<p class="validation-message">This field is required</p>*/}
-                            {/*</label>*/}
+                            <Field name="password" type="password" component={RenderInput} label="Password"/>
                         </div>
                     </section>
 
@@ -71,105 +79,51 @@ export class PaymentPageForm extends React.Component {
 
                     <section>
                         <div class="column">
-                            <label class="form-control error a4P6">
-                                <input type="text"
-                                       placeholder="First name"
-                                       name="firstName" value=""
-                                       class="K2F3 scentbird-input"/>
-
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="firstName" type="text" component={RenderInput} label="First name"/>
                         </div>
                         <div class="column">
-                            <label class="form-control error a4P6">
-                                <input type="text"
-                                       placeholder="Last name"
-                                       name="lastName" value=""
-                                       class="K2F3 scentbird-input"/>
-
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="lastName" type="text" component={RenderInput} label="Last name"/>
                         </div>
                     </section>
 
                     <section>
                         <div class="column column-street">
-                            <label class="form-control error a4P6">
-                                <input type="text"
-                                       placeholder="Street address"
-                                       name="street" value=""
-                                       class="K2F3 scentbird-input"/>
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="street" type="text" component={RenderInput} label="Street address"/>
                         </div>
                         <div class="column column-apt">
-                            <label class="form-control error a4P6">
-                                <input type="text"
-                                       placeholder="Apt/Suite (Optional)"
-                                       name="apt" value=""
-                                       class="K2F3 scentbird-input"/>
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="apt" type="text" component={RenderInput} label="Apt/Suite"/>
                         </div>
                     </section>
 
                     <section>
                         <div class="column">
-                            <label class="form-control error a4P6">
-                                <input type="text"
-                                       placeholder="Zip"
-                                       name="zip" value=""
-                                       class="K2F3 scentbird-input"/>
-
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="zip" type="text" component={RenderInput} label="Zip"/>
                         </div>
                         <div class="column">
-                            <label class="form-control error a4P6">
-                                <select name="state" class="K2F3 scentbird-input">
-                                    <option>Select state</option>
-                                    <option>NEW YORK</option>
-                                    <option>qqq</option>
-                                </select>
-
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="state" component={RenderSelect} label="State">
+                                <option>Select state</option>
+                                <option>NEW YORK</option>
+                                <option>qqq</option>
+                            </Field>
                         </div>
                         <div class="column">
-                            <label class="form-control error a4P6">
-                                <select name="city" class="K2F3 scentbird-input">
-                                    <option>Select city</option>
-                                    <option>NEW YORK</option>
-                                    <option>www</option>
-                                </select>
-
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="city" component={RenderSelect} label="City">
+                                <option>Select city</option>
+                                <option>NEW YORK</option>
+                                <option>qqq</option>
+                            </Field>
                         </div>
                     </section>
 
                     <section>
                         <div class="column column-long">
-                            <label class="form-control error a4P6">
-                                <input type="text"
-                                       placeholder="Country"
-                                       name="country" value=""
-                                       class="K2F3 scentbird-input"/>
-
-                                <p class="validation-message">This field is required</p>
-                            </label>
+                            <Field name="country" type="text" component={RenderInput} label="Country"/>
                         </div>
                     </section>
 
                     <section>
                         <div class="column">
-                            <label class="form-control error a4P6">
-                                <input type="text"
-                                       placeholder="Mobile number (Optional)"
-                                       name="phone" value=""
-                                       class="K2F3 scentbird-input"/>
-
-                            </label>
+                            <Field name="phone" type="text" component={RenderInput} label="Mobile number (Optional)"/>
                         </div>
                         <div class="column column-center">
                             We may send you special discounts and offers
@@ -177,9 +131,11 @@ export class PaymentPageForm extends React.Component {
                     </section>
 
                     <div class="billing-address-on">
-                        <input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox"
-                               checked="checked"/>
-                        <label htmlFor="checkboxG5" class="css-label">
+                        <input type="checkbox" name="useAsBilling" id="useAsBilling" class="css-checkbox"
+                               defaultChecked={true}
+                               onClick={this.handleClickCheckbox}
+                               />
+                        <label htmlFor="useAsBilling" class="css-label">
                             Use this address as my billing address
                         </label>
                     </div>
@@ -188,7 +144,7 @@ export class PaymentPageForm extends React.Component {
 
                     <div class="cc-wrapper">
                         <span class="b-icon icon-cc-sign"/>
-                        <span class="cc-encryption">128-BIT ENCRYPTION.     YOU’RE SAFE</span>
+                        <span class="cc-encryption">128-BIT ENCRYPTION. YOU’RE SAFE</span>
                         <span class="b-icon icon-cc-all"/>
 
                         <section class="credit-card-payment">
