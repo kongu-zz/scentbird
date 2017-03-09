@@ -1,6 +1,7 @@
 let webpack = require("webpack");
 let CleanWebpackPlugin = require("clean-webpack-plugin");
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 let path = require("path");
 
@@ -52,6 +53,13 @@ let babelOptions = {
 if (debugHot) {
     babelOptions.presets.push("react-hmre");
 }
+let extractCss = new ExtractTextPlugin(
+    {
+        filename: "styles.css",
+        disable: false,
+        allChunks: true
+    });
+
 
 module.exports = {
     entry: {
@@ -81,11 +89,18 @@ module.exports = {
             },
             {
                 test: /css\\.*\.(less)$/,
-                use: [
-                    {loader: "style-loader"},
-                    {loader: "css-loader"},
-                    {loader: "less-loader"},
-                ]
+                loader: ExtractTextPlugin.extract(
+                    {
+                        fallbackLoader: "style-loader!css-loader",
+                        loader: "css-loader!less-loader",
+                        disable: false,
+                        allChunks: true
+                    })
+                // use: [
+                //     {loader: "style-loader"},
+                //     {loader: "css-loader"},
+                //     {loader: "less-loader"},
+                // ]
             },
             {
                 test: /.*\.css$/,
@@ -96,18 +111,28 @@ module.exports = {
             },
             {test: /js\\index.html/, use: {loader: "file-loader", query: {"name": "[name].[ext]"}}},
             {test: /locale\\.*\.json$/, loader: "json-loader"},
+            // {
+            //     test: /\.(woff|woff2|eot|ttf)$/,
+            //     exclude: /node_modules/,
+            //     loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
+            // },
             {
-                test: /.*\.woff(2)?(\?v=[0-9].[0-9].[0-9])?$/,
-                use: {loader: "url-loader", query: {"mimetype": "application/font-woff"}}
+                test: /.*\.(woff|woff2|ttf|eot)?(\?v=[0-9].[0-9].[0-9])?$/,
+                use: {loader: "url-loader?importLoaders=1&limit=100000", query: {"mimetype": "application/font-woff"}}
             },
             {
-                test: /.*\.(ttf|eot|svg|jpg|jpeg|png|gif|ico)(\?v=[0-9].[0-9].[0-9])?$/,
+                test: /.*\.(eot|ttf|svg|jpg|jpeg|png|gif|ico)(\?v=[0-9].[0-9].[0-9])?$/,
                 use: {
                     loader: "file-loader", query: debugHot
                         ? {"publicPath": "/", "name": "[name].[ext]"}
                         : {"name": "/files/[name].[ext]"}
                 },
             },
+            // { test: /\.svg$/, loader: 'url-loader?limit=65000&mimetype=image/svg+xml&name=font/[name].[ext]' },
+            // { test: /\.woff$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff&name=font/[name].[ext]' },
+            // { test: /\.woff2$/, loader: 'url-loader?limit=65000&mimetype=application/font-woff2&name=font/[name].[ext]' },
+            // { test: /\.[ot]tf$/, loader: 'url-loader?limit=65000&mimetype=application/octet-stream&name=font/[name].[ext]' },
+            // { test: /\.eot$/, loader: 'url-loader?limit=65000&mimetype=application/vnd.ms-fontobject&name=font/[name].[ext]' }
         ]
     },
     watchOptions: {
@@ -128,11 +153,13 @@ module.exports = {
             defineEnv,
             cleanBuildFolder,
             referencesPlugin,
+            extractCss,
             copyStatic,
         ] : [
             defineEnv,
             cleanBuildFolder,
             referencesPlugin,
+            extractCss,
             copyStatic,
 
             new webpack.LoaderOptionsPlugin({
