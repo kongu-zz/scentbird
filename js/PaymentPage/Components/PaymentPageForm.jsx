@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Field, reduxForm} from "redux-form";
 import classNames from "classnames";
-var valid = require('card-validator');
+let valid = require('card-validator');
 
 const validate = (values) => {
     let errors = {};

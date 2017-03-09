@@ -28,7 +28,4 @@ render(
     </Provider>,
     document.getElementById("app")
 );
-// render(
-//     <PaymentPageLayout/>,
-//     document.getElementById('app')
-// );
+
