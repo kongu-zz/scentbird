@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Field, reduxForm} from 'redux-form';
 import classNames from "classnames";
 
-export const validate = (values) => {
+const validate = (values) => {
     let errors = {};
     if (!values.email) {
         errors.email = "This field is required";
@@ -15,6 +15,56 @@ export const validate = (values) => {
         errors.password = "This field is required";
     } else if (values.password.length < 10) {
         errors.password = "Password must be 10 or more chars";
+    }
+
+    if (!values["shippingfirstName"]) {
+        errors["shippingfirstName"] = "This field is required";
+    }
+
+    errors = validateAddress(errors, values, shippingValues);
+    errors = validateAddress(errors, values, billingValues);
+
+    return errors;
+};
+
+const shippingValues = [
+    "shippingfirstName",
+    "shippinglastName",
+    "shippingstreet",
+    "shippingapt",
+    "shippingzip",
+    "shippingstate",
+    "shippingcity",
+    "shippingcountry",
+    "shippingphone"
+];
+
+const billingValues = [
+    "billingfirstName",
+    "billinglastName",
+    "billingstreet",
+    "billingapt",
+    "billingzip",
+    "billingstate",
+    "billingcity",
+    "billingcountry",
+    "billingphone"
+];
+
+const validateAddress = (errors, values, testValues) => {
+    for (let value of testValues) {
+        if (!values[value]) {
+            if (value.includes("apt") || value.includes("phone")) {
+                continue;
+            }
+            errors[value] = "This field is required";
+        }
+        if(value.includes("state") && values[value] === "Select state") {
+            errors[value] = "This field is required";
+        }
+        if(value.includes("city") && values[value] === "Select city") {
+            errors[value] = "This field is required";
+        }
     }
 
     return errors;
@@ -41,6 +91,131 @@ const RenderSelect = ({input, label, meta: {touched, error}, children}) => (
     </label>
 );
 
+const AccountForm = () => (
+    <div>
+        <h2>Create account</h2>
+        <section>
+            <div class="column">
+                <Field name="email" type="email" component={RenderInput} label="Email address"/>
+            </div>
+            <div class="column">
+                <Field name="password" type="password" component={RenderInput} label="Password"/>
+            </div>
+        </section>
+    </div>
+);
+
+const AddressForm = ({fieldPrefix, title}) => (
+    <div>
+        <h2>{title}</h2>
+
+        <section>
+            <div class="column">
+                <Field name={`${fieldPrefix}firstName`} type="text" component={RenderInput} label="First name"/>
+            </div>
+            <div class="column">
+                <Field name={`${fieldPrefix}lastName`} type="text" component={RenderInput} label="Last name"/>
+            </div>
+        </section>
+
+        <section>
+            <div class="column column-street">
+                <Field name={`${fieldPrefix}street`} type="text" component={RenderInput} label="Street address"/>
+            </div>
+            <div class="column column-apt">
+                <Field name={`${fieldPrefix}apt`} type="text" component={RenderInput} label="Apt/Suite (Optional)"/>
+            </div>
+        </section>
+
+        <section>
+            <div class="column">
+                <Field name={`${fieldPrefix}zip`} type="text" component={RenderInput} label="Zip"/>
+            </div>
+            <div class="column">
+                <Field name={`${fieldPrefix}state`} component={RenderSelect} label="State">
+                    <option>Select state</option>
+                    <option>NEW YORK</option>
+                    <option>qqq</option>
+                </Field>
+            </div>
+            <div class="column">
+                <Field name={`${fieldPrefix}city`} component={RenderSelect} label="City">
+                    <option>Select city</option>
+                    <option>NEW YORK</option>
+                    <option>qqq</option>
+                </Field>
+            </div>
+        </section>
+
+        <section>
+            <div class="column column-long">
+                <Field name={`${fieldPrefix}country`} type="text" component={RenderInput} label="Country"/>
+            </div>
+        </section>
+
+        <section>
+            <div class="column">
+                <Field name={`${fieldPrefix}phone`} type="text" component={RenderInput} label="Mobile number (Optional)"/>
+            </div>
+            <div class="column column-center">
+                We may send you special discounts and offers
+            </div>
+        </section>
+    </div>
+);
+
+const CreditCardForm = () => (
+    <div>
+        <h2>Secure credit card payment</h2>
+
+        <div class="cc-wrapper">
+            <span class="b-icon icon-cc-sign"/>
+            <span class="cc-encryption">128-BIT ENCRYPTION. YOU’RE SAFE</span>
+            <span class="b-icon icon-cc-all"/>
+
+            <section class="credit-card-payment">
+                <div class="column cc-number">
+                    <Field name="ccNumber" type="text" component={RenderInput} label="Credit card number"/>
+
+                </div>
+                <div class="column cc-security-code">
+                    <Field name="ccCode" type="text" component={RenderInput} label="Security code"/>
+                </div>
+                <div class="column cc-year">
+                    <Field name={`ccMonth`} component={RenderSelect} label="Month">
+                        <option>Month</option>
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                        <option>05</option>
+                        <option>06</option>
+                        <option>07</option>
+                        <option>08</option>
+                        <option>09</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                    </Field>
+                </div>
+                <div class="column cc-month">
+                    <Field name={`ccYear`} component={RenderSelect} label="Year">
+                        <option>Year</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+
+                    </Field>
+                </div>
+                <div class="column cc-other">
+                    <span>Exp.</span>
+                </div>
+            </section>
+        </div>
+    </div>
+);
 
 
 @connect((s) => ({}))
@@ -52,83 +227,35 @@ const RenderSelect = ({input, label, meta: {touched, error}, children}) => (
 })
 export class PaymentPageForm extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {showBilling: false};
+    }
+
     submit = (values) => {
         // some submit action
     };
 
     handleClickCheckbox = (e) => {
-        //this.setState({checked: e.target.checked});
+        this.setState({showBilling: !this.state.showBilling});
     };
 
     render() {
+        let billingAddressForm = null;
+        if (this.state.showBilling) {
+            billingAddressForm = <AddressForm fieldPrefix="billing" title="Billing address"/>
+        }
+
         return (
             <form onSubmit={this.props.handleSubmit(this.submit)}>
                 <div class="checkout">
 
-                    <h2>Create account</h2>
-                    <section>
-                        <div class="column">
-                            <Field name="email" type="email" component={RenderInput} label="Email address"/>
-                        </div>
-                        <div class="column">
-                            <Field name="password" type="password" component={RenderInput} label="Password"/>
-                        </div>
-                    </section>
+                    <AccountForm/>
 
-                    <h2>Shipping address</h2>
+                    <AddressForm fieldPrefix="shipping" title="Shipping address"/>
 
-                    <section>
-                        <div class="column">
-                            <Field name="firstName" type="text" component={RenderInput} label="First name"/>
-                        </div>
-                        <div class="column">
-                            <Field name="lastName" type="text" component={RenderInput} label="Last name"/>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="column column-street">
-                            <Field name="street" type="text" component={RenderInput} label="Street address"/>
-                        </div>
-                        <div class="column column-apt">
-                            <Field name="apt" type="text" component={RenderInput} label="Apt/Suite"/>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="column">
-                            <Field name="zip" type="text" component={RenderInput} label="Zip"/>
-                        </div>
-                        <div class="column">
-                            <Field name="state" component={RenderSelect} label="State">
-                                <option>Select state</option>
-                                <option>NEW YORK</option>
-                                <option>qqq</option>
-                            </Field>
-                        </div>
-                        <div class="column">
-                            <Field name="city" component={RenderSelect} label="City">
-                                <option>Select city</option>
-                                <option>NEW YORK</option>
-                                <option>qqq</option>
-                            </Field>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="column column-long">
-                            <Field name="country" type="text" component={RenderInput} label="Country"/>
-                        </div>
-                    </section>
-
-                    <section>
-                        <div class="column">
-                            <Field name="phone" type="text" component={RenderInput} label="Mobile number (Optional)"/>
-                        </div>
-                        <div class="column column-center">
-                            We may send you special discounts and offers
-                        </div>
-                    </section>
+                    {billingAddressForm}
 
                     <div class="billing-address-on">
                         <input type="checkbox" name="useAsBilling" id="useAsBilling" class="css-checkbox"
@@ -140,60 +267,7 @@ export class PaymentPageForm extends React.Component {
                         </label>
                     </div>
 
-                    <h2>Secure credit card payment</h2>
-
-                    <div class="cc-wrapper">
-                        <span class="b-icon icon-cc-sign"/>
-                        <span class="cc-encryption">128-BIT ENCRYPTION. YOU’RE SAFE</span>
-                        <span class="b-icon icon-cc-all"/>
-
-                        <section class="credit-card-payment">
-                            <div class="column cc-number">
-                                <label class="form-control error a4P6">
-                                    <input type="text"
-                                           placeholder="Credit card number"
-                                           name="ccNumber" value=""
-                                           class="K2F3 scentbird-input"/>
-
-                                    <p class="validation-message">This field is required</p>
-                                </label>
-                            </div>
-                            <div class="column cc-security-code">
-                                <label class="form-control error a4P6">
-                                    <input type="text"
-                                           placeholder="Security code"
-                                           name="ccNumber" value=""
-                                           class="K2F3 scentbird-input"/>
-                                    <p class="validation-message">This field is required</p>
-                                </label>
-                            </div>
-                            <div class="column cc-year">
-                                <label class="form-control error a4P6">
-                                    <select name="ccMonth" class="K2F3 scentbird-input">
-                                        <option>Month</option>
-                                        <option>NEW YORK</option>
-                                        <option>yyy</option>
-                                    </select>
-
-                                    <p class="validation-message">This field is required</p>
-                                </label>
-                            </div>
-                            <div class="column cc-month">
-                                <label class="form-control error a4P6">
-                                    <select name="ccYear" class="K2F3 scentbird-input">
-                                        <option>Year</option>
-                                        <option>NEW YORK</option>
-                                        <option>uu</option>
-                                    </select>
-
-                                    <p class="validation-message">This field is required</p>
-                                </label>
-                            </div>
-                            <div class="column cc-other">
-                                <span>Exp.</span>
-                            </div>
-                        </section>
-                    </div>
+                    <CreditCardForm/>
 
                     <div class="buttons">
                         <button class="btn btn-primary">BUY NOW</button>
