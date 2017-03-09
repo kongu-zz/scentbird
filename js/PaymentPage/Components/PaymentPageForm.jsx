@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Field, reduxForm} from 'redux-form';
+import {Field, reduxForm} from "redux-form";
 import classNames from "classnames";
+var valid = require('card-validator');
 
 const validate = (values) => {
     let errors = {};
@@ -17,12 +18,29 @@ const validate = (values) => {
         errors.password = "Password must be 10 or more chars";
     }
 
-    if (!values["shippingfirstName"]) {
-        errors["shippingfirstName"] = "This field is required";
-    }
-
     errors = validateAddress(errors, values, shippingValues);
     errors = validateAddress(errors, values, billingValues);
+
+
+    if (!values.ccNumber) {
+        errors.ccNumber = "This field is required";
+    } else if (valid.number(values.ccNumber).isValid === false) {
+        errors.ccNumber = "Invalid Credit Card number";
+    }
+
+    if (!values.ccCode) {
+        errors.ccCode = "This field is required";
+    } else if (values.ccCode === "111") {
+        errors.ccCode = "Incorrect code";
+    }
+
+    if (values.ccYear === "Year") {
+        errors.ccYear = "This field is required";
+    }
+
+    if (values.ccMonth === "Month") {
+        errors.ccMonth = "This field is required";
+    }
 
     return errors;
 };
