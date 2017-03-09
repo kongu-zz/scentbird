@@ -32,9 +32,10 @@
 }
 
 .logo {
-  width: 137px;
-  height: 39px;
+  width: 114px;
+  height: 32px;
   background: url("logo.svg") no-repeat;
+  background-size: 114px 32px;
   top: 18px;
 
   position: relative;
@@ -57,6 +58,12 @@
 }
 
 @media (min-width: 768px) {
+  .logo {
+    width: 137px;
+    height: 39px;
+    background-size: 137px 39px;
+  }
+
   .free-perfume-product {
     height: 284px;
     width: 67px;

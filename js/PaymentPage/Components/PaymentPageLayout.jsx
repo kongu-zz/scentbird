@@ -2,6 +2,12 @@ import React from "react";
 import {PaymentPageForm} from "./PaymentPageForm";
 import classNames from "classnames";
 
+const HeaderLogo = () => (
+    <div class="header">
+        <div class="logo"></div>
+    </div>
+);
+
 const ContentHeader = ({title, isDesktop = false}) => (
     <div class={classNames("content-header", {"content-header-desktop": isDesktop})}>
         <div class="title">
@@ -27,18 +33,9 @@ export class PaymentPageLayout extends React.Component {
             <div class="container">
 
                 <div class="wrapper">
-                    <div class="header">
-                        <div class="logo"></div>
-                    </div>
+                    <HeaderLogo/>
                     <ContentHeader title="MONTHLY SUBSCRIPTION"/>
-                    {/*<div class="content-header">
-                        <div class="title">
-                            MONTHLY SUBSCRIPTION
-                        </div>
-                        <div class="slogan">
-                            Billed monthly. Renews automatically, cancel any time. Free shipping.
-                        </div>
-                    </div>*/}
+
                     <div class="aside">
                         <div class="order">
                             <div class="free-perfume-product"/>
@@ -101,14 +98,7 @@ export class PaymentPageLayout extends React.Component {
                     </div>
                     <div class="content">
                         <ContentHeader title="MONTH-TO-MONTH SUBSCRIPTION" isDesktop={true}/>
-                        {/*<div class="content-header content-header-desktop">
-                            <div class="title">
-                                MONTH-TO-MONTH SUBSCRIPTION
-                            </div>
-                            <div class="slogan">
-                                Billed monthly. Renews automatically, cancel any time. Free shipping.
-                            </div>
-                        </div>*/}
+
                         <PaymentPageForm/>
                     </div>
                     <div class="picture">
