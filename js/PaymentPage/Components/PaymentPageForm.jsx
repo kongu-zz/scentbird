@@ -88,10 +88,10 @@ const validateAddress = (errors, values, testValues) => {
     return errors;
 };
 
-const RenderInput = ({input, label, type, meta: {touched, error}}) => (
+const RenderInput = ({input, label, type, meta: {touched, error}, icon}) => (
     <label class="form-control error bg" class={classNames("form-control", {"error": touched && error}, "bg")}>
         <input {...input} placeholder={label}
-               class="scentbird-input" type={type}/>
+               class={classNames("scentbird-input", icon)} type={type}/>
         {touched && ((error && <p class="validation-message">{error}</p>))}
 
     </label>
@@ -100,7 +100,7 @@ const RenderInput = ({input, label, type, meta: {touched, error}}) => (
 const RenderSelect = ({input, label, meta: {touched, error}, children}) => (
     <label class="form-control error bg" class={classNames("form-control", {"error": touched && error}, "bg")}>
 
-        <select {...input} class="scentbird-input">
+        <select {...input} class="scentbird-input arrow-down">
             {children}
         </select>
 
@@ -193,7 +193,12 @@ const CreditCardForm = () => (
 
             <section class="credit-card-payment">
                 <div class="column cc-number">
-                    <Field name="ccNumber" type="text" component={RenderInput} label="Credit card number"/>
+                    <Field name="ccNumber" type="text"
+                           component={props =>
+                                <RenderInput {...props} icon="question-circle-gray"
+                                />}
+                           label="Credit card number"
+                           props={{icon: "question-circle-gray"}}/>
 
                 </div>
                 <div class="column cc-security-code">
