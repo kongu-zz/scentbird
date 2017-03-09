@@ -1,28 +1,34 @@
 import React from "react";
-import {connect} from "react-redux";
 import {render} from "react-dom";
+import thunk from "redux-thunk";
+import {applyMiddleware, createStore, combineReducers} from "redux";
+import {connect, Provider} from "react-redux";
+import {reducer as formReducer} from "redux-form";
+import {composeWithDevTools} from "redux-devtools-extension";
 
-export class Main extends React.Component {
-    constructor(props) {
-        super(props);
+import {PaymentPageLayout} from "./PaymentPage/Components/PaymentPageLayout";
 
-    }
+let reducersCombination = combineReducers({
+    form: formReducer
+});
 
-    componentDidMount() {
 
-    }
+let middleware = composeWithDevTools({})(applyMiddleware(
+    thunk
+));
 
-    render() {
-
-        return (
-            <div>
-                test
-            </div>
-        );
-    }
-}
+const store = createStore(
+    reducersCombination,
+    middleware
+);
 
 render(
-    <Main/>,
-    document.getElementById('app')
+    <Provider store={store}>
+        <PaymentPageLayout/>
+    </Provider>,
+    document.getElementById("app")
 );
+// render(
+//     <PaymentPageLayout/>,
+//     document.getElementById('app')
+// );
