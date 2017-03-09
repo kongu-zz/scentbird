@@ -44,7 +44,7 @@ export const ValidateDomainSearch = (values) => {
 // })
 export class PaymentPageForm extends React.Component {
 
-    props: IProps & any;
+    // props: IProps & any;
 
     submit = (values) => {
         const search = new DomainSearchQuery(values);
