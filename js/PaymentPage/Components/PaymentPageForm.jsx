@@ -18,8 +18,8 @@ const validate = (values) => {
         errors.password = "Password must be 10 or more chars";
     }
 
-    errors = validateAddress(errors, values, shippingValues);
-    errors = validateAddress(errors, values, billingValues);
+    validateAddress(errors, values, shippingValues);
+    validateAddress(errors, values, billingValues);
 
 
     if (!values.ccNumber) {
@@ -84,8 +84,6 @@ const validateAddress = (errors, values, testValues) => {
             errors[value] = "This field is required";
         }
     }
-
-    return errors;
 };
 
 const RenderInput = ({input, label, type, meta: {touched, error}, icon}) => (
