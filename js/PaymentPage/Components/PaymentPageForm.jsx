@@ -200,7 +200,12 @@ const CreditCardForm = () => (
 
                 </div>
                 <div class="column cc-security-code">
-                    <Field name="ccCode" type="text" component={RenderInput} label="Security code"/>
+                    <Field name="ccCode" type="text"
+                           component={props =>
+                        <RenderInput {...props}
+                        />} label="Security code"/>
+
+                    <span class="b-icon icon-cc-question"/>
                 </div>
                 <div class="column cc-year">
                     <Field name={`ccMonth`} component={RenderSelect} label="Month">
