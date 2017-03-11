@@ -34,11 +34,11 @@ const validate = (values) => {
         errors.ccCode = "Incorrect code";
     }
 
-    if (values.ccYear === "Year") {
+    if (!values.ccYear || values.ccYear === "Year") {
         errors.ccYear = "This field is required";
     }
 
-    if (values.ccMonth === "Month") {
+    if (!values.ccMonth || values.ccMonth === "Month") {
         errors.ccMonth = "This field is required";
     }
 
@@ -263,7 +263,7 @@ export class PaymentPageForm extends React.Component {
         // some submit action
     };
 
-    handleClickCheckbox = (e) => {
+    handleClickCheckbox = () => {
         this.setState({showBilling: !this.state.showBilling});
     };
 
