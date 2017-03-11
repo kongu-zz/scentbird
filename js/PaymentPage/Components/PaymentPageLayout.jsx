@@ -64,7 +64,7 @@ const TotalBody = () => (
             </tr>
             <tr>
                 <td>Credit (Balance $100)</td>
-                <td>$50 <input type="checkbox" name="checkboxG2" defaultChecked={true} class="css-checkbox2"/>
+                <td>$50 <input type="checkbox" name="checkboxG2" id="checkboxG2" defaultChecked={true} class="css-checkbox2"/>
                     <label htmlFor="checkboxG2" class="css-label2"/></td>
             </tr>
             </tbody>
