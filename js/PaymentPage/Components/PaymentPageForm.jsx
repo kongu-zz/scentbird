@@ -87,7 +87,7 @@ const validateAddress = (errors, values, testValues) => {
 };
 
 const RenderInput = ({input, label, type, meta: {touched, error}, icon}) => (
-    <label class="form-control error bg" class={classNames("form-control", {"error": touched && error}, "bg")}>
+    <label class={classNames("form-control", {"error": touched && error}, "bg")}>
         <input {...input} placeholder={label}
                class={classNames("scentbird-input", icon)} type={type}/>
         {touched && ((error && <p class="validation-message">{error}</p>))}
@@ -96,7 +96,7 @@ const RenderInput = ({input, label, type, meta: {touched, error}, icon}) => (
 );
 
 const RenderSelect = ({input, label, meta: {touched, error}, children}) => (
-    <label class="form-control error bg" class={classNames("form-control", {"error": touched && error}, "bg")}>
+    <label class={classNames("form-control", {"error": touched && error}, "bg")}>
 
         <select {...input} class="scentbird-input arrow-down">
             {children}
